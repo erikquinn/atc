@@ -467,6 +467,8 @@ function canvas_draw_aircraft(cc, aircraft) {
   cc.beginPath();
   cc.arc(0, 0, size, 0, Math.PI * 2);
   cc.fill();
+
+  airport_get().updateWind();
 }
 
 // Run physics updates into the future, draw future track
@@ -821,7 +823,7 @@ function canvas_draw_compass(cc) {
   cc.textAlign = "center";
   cc.textBaseline = "center";
   cc.font = "9px monoOne, monospace";
-  cc.fillText(airport_get().wind.speed, 0, 3.8);
+  cc.fillText(Math.floor(airport_get().wind.speed), 0, 3.8);
   cc.font = "bold 10px monoOne, monospace";
 
   // Wind line

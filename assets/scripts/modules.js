@@ -28,7 +28,9 @@ var MODULES=[
 
   "ui",
 
-  "load"
+  "load",
+
+  "weather"
 ];
 
 // saved as prop.version and prop.version_string
@@ -264,7 +266,7 @@ function update() {
 
   game_update_pre();
   aircraft_update();
-
+  weather_update();
   canvas_update_post();
 
   if(UPDATE)

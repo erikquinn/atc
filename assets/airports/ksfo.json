@@ -12,7 +12,8 @@
   "has_terrain": true,
   "wind": {
     "angle": 310,
-    "speed": 5
+    "speed": 5,
+    "profile": []
   },
   "fixes": {
     "BERKS": ["N37.860861", "W122.211678"],

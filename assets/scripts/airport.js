@@ -604,7 +604,7 @@ var Runway=Fiber.extend(function(base) {
       var offset = [0, 0];
       offset[0]  = (-cos(this.angle) * position[0]) + (sin(this.angle) * position[1]);
       offset[1]  = ( sin(this.angle) * position[0]) + (cos(this.angle) * position[1]);
-//      offset[1] *= -1;
+  //      offset[1] *= -1;
 
       if(end == 0) {
         offset = vscale(offset, -1);
@@ -718,6 +718,8 @@ var Airport=Fiber.extend(function() {
         speed: 10,
         angle: 0
       };
+      this.wind.profile = [];
+      // console.log(generateWindProfile('ksfo'));
 
       this.ctr_radius  = 80;
       this.ctr_ceiling = 10000;
@@ -737,6 +739,9 @@ var Airport=Fiber.extend(function() {
       wind.angle += crange(-1, angle_factor, 1, radians(-4), radians(4));
       wind.speed *= crange(-1, speed_factor, 1, 0.9, 1.05);
       return wind;
+    },
+    setWind: function(wind) {
+      this.wind = wind;
     },
     parse: function(data) {
       if(data.position) this.position = new Position(data.position);
@@ -806,7 +811,7 @@ var Airport=Fiber.extend(function() {
       }
 
       if(data.wind) {
-        this.wind = data.wind;
+        this.wind.speed = data.wind.speed;
         this.wind.angle = radians(this.wind.angle);
       }
 
@@ -964,7 +969,7 @@ var Airport=Fiber.extend(function() {
         if(this.runways[i].name[1].toLowerCase() == name) return this.runways[i];
       }
       return null;
-    }
+    },
   };
 });
 
