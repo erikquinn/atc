@@ -157,10 +157,37 @@ function srange(il,i,ih) {
   //    return Math.cos();
 }
 
+//Distance Formula (for distance in 2-D plane)
 function distance2d(a,b) {
   var x=a[0]-b[0];
   var y=a[1]-b[1];
   return Math.sqrt((x*x)+(y*y));
+}
+
+//Haversine distance (for great-circle distance)
+function distance3d(a,b) {
+  var R = 6371; // earth radius, kilometers
+  var phi1 = a[0].toRadians();
+  var phi2 = a[1].toRadians();
+  var dphi = (a[1]-a[0]).toRadians();
+  var dlamba = (b[1]-b[0]).toRadians();
+  var a = Math.sin(dphi/2) * Math.sin(dphi/2) +
+          Math.cos(phi1) * Math.cos(phi2) *
+          Math.sin(dlamba/2) * Math.sin(dlamba/2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  var d = R * c;
+}
+
+// Returns the location of a fix defined via fix-radial-distance methods
+function radialDistanceFix(a, radialOutbound_deg, dist_nm) {
+  var R = 6371; // earth radius, kilometers
+  var d = dist_nm * 1.852;
+  var brng = radians(radialOutbound_deg);
+  var lat = Math.asin(Math.sin(a.latitude)*Math.cos(d/R) +
+                      Math.cos(a.latitude)*Math.sin(d/R)*Math.cos(brng) );
+  var lon = a.longitude + Math.atan2(Math.sin(radians(radialOutbound_deg))*Math.sin((dist_nm*1.852)/R)*Math.cos(a.latitude),
+                              Math.cos((dist_nm*1.852)/R)-Math.sin(a.latitude)*Math.sin(lat));
+  return [lat,lon];
 }
 
 function degrees(radians) {
@@ -194,7 +221,6 @@ function choose_weight(l) {
   console.log("OHSHIT");
   return(null);
 }
-
 
 function mod(a, b) {
   return ((a%b)+b)%b;

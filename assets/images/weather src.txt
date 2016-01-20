@@ -1,0 +1,1 @@
+http://api.wunderground.com/api/8b97e6584dc934b3/radar/image.gif?centerlat=37.621406&centerlon=-122.379481&radius=100&smooth=1&height=800&width=800

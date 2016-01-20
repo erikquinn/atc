@@ -893,6 +893,14 @@ function canvas_draw_ctr(cc) {
 		cc.strokeStyle = "rgba(200, 255, 200, 0.1)";
 		cc.stroke();
   }
+
+  var nCtr = radialDistanceFix(airport_get().position,   0, 100);  // 100 nm north of airport
+  var wCtr = radialDistanceFix(airport_get().position, 270, 100);  // 100 nm west of airport
+  var sCtr = radialDistanceFix(airport_get().position, 180, 100);  // 100 nm south of airport
+  var eCtr = radialDistanceFix(airport_get().position,  90, 100);  // 100 nm east of airport
+
+  var precip = document.getElementById("overlay");
+  cc.drawImage(precip, -(document.getElementById("navaids-canvas").width)/2, -(document.getElementById("navaids-canvas").height)/2);
 }
 
 // Draw range rings for ENGM airport to assist in point merge
