@@ -4,17 +4,17 @@
 	<meta charset="utf-8">
 	<title>jQuery maphilight documentation</title>
 	<script type="text/javascript" src="../assets/scripts/jquery.min.js"></script>
-	<script type="text/javascript" src="../assets/scripts/jquery.maphilight.min.js"></script>
-	<script type="text/javascript">$(function() {
-		$('.map').maphilight({fade: false, fillColor:''});
-		$('#na').click(function() {
-			alert( "Handler for 'na' called." );
+	<script type="text/javascript" src="../assets/scripts/jquery.maphilight.js"></script>
+	<script src="ui.js"></script>
+	<script>
+		$("#shit").mouseover(function() {
+			alert("activating!");
 		});
-	});</script>
+	</script>
 </head>
 
 <body>
-<div>
+<div id="shit">
 	<img class="map" src="../assets/images/worldMap.svg" style="width:500px; height:250px;" usemap="#world">
 	<map name="world">
 			<area shape="poly" id="af" title="Africa" style="cursor:default; pointer-events: none;" data-maphilight='{"strokeColor":"bbbbbb","strokeWidth":1,"fillColor":"77C25C","fillOpacity":0.6}' coords="382,140, 382,137, 385,135, 387,135, 387,134, 388,134, 389,133, 390,133, 392,132, 393,132, 392,131, 392,131, 392,130, 393,130, 394,130, 394,130, 395,129, 398,129, 398,128, 398,128, 398,128, 397,127, 397,127, 397,124, 397,123, 396,123, 396,123, 397,122, 397,122, 398,122, 398,121, 400,121,400,121, 401,121, 401,121, 401,120, 403,120, 406,119, 407,119, 408,119, 408,119, 409,119, 412,119, 414,119, 415,118, 416,119, 417,118, 418,118, 418,118, 418,119, 418,119, 420,118, 420,119, 419,119, 419,123, 419,124, 418,125, 418,125, 418,127, 419,127, 419,127, 420,129, 420,129, 421,130, 422,133, 422,133, 422,134, 422,135,423,139, 422,140, 423,141, 423,142, 423,142, 422,142, 422,143, 423,144, 423,145, 424,146, 424,146, 424,146, 426,147, 426,147, 427,148, 427,148, 414,157, 408,158, 408,158, 408,157, 408,157, 408,156, 407,156, 407,156, 406,156, 406,155, 405,156, 405,156, 403,154, 403,154, 403,154, 403,153, 382,140, 382,140, 382,140">
