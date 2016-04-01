@@ -743,6 +743,7 @@ var Airport=Fiber.extend(function() {
     },
     parse: function(data) {
       if(data.position) this.position = new Position(data.position);
+      if(data.aerodrome) this.aerodrome = data.aerodrome;
       if(data.magnetic_north) this.magnetic_north = radians(data.magnetic_north);
       if(!this.magnetic_north) this.magnetic_north = 0;
       if(data.name) this.name   = data.name;

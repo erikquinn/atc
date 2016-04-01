@@ -22,14 +22,13 @@ function canvas_init_pre() {
   prop.canvas.draw_restricted = true;
   prop.canvas.draw_sids = true;
   prop.canvas.draw_terrain = true;
+  prop.canvas.aerodrome_img = new Image();
+  prop.canvas.aerodrome_img_loaded = false;
 }
 
 function canvas_init() {
   "use strict";
-  canvas_add("compass");
-  canvas_add("navaids");
-  canvas_add("info");
-  canvas_add("aircraft");
+  canvas_add("navaids");    // currently, EVERYTHING is drawn to this single canvas
 }
 
 function canvas_adjust_hidpi() {
@@ -56,6 +55,12 @@ function canvas_complete() {
     prop.canvas.dirty = true;
   }, 500);
   prop.canvas.last = time();
+
+  // doing this here, because we needed to wait until the airport loaded fully
+  prop.canvas.aerodrome_img.src = "assets/images/aerodromes/" + airport_get().icao.toLowerCase() + ".svg";
+  prop.canvas.aerodrome_img.onload = function() { 
+    prop.canvas.aerodrome_img_loaded = true;
+  }
 }
 
 function canvas_resize() {
@@ -233,6 +238,19 @@ function canvas_draw_scale(cc) {
 
   cc.textAlign = 'center';
   cc.fillText(length + ' km', prop.canvas.size.width - offset - px_length * 0.5, offset + height + 17);
+}
+
+function canvas_draw_aerodrome(cc) {
+  if(!prop.canvas.aerodrome_img_loaded) return;
+  var canvas = $("canvas")[0].getContext("2d");
+  var apt = airport_get();
+  canvas.save();
+  canvas.rotate(radians(apt.magnetic_north));
+  canvas.drawImage(prop.canvas.aerodrome_img,
+    apt.aerodrome.shift_right*prop.ui.scale + prop.canvas.panX,
+    -apt.aerodrome.shift_up*prop.ui.scale + prop.canvas.panY,
+    apt.aerodrome.size*(prop.ui.scale), apt.aerodrome.size*(prop.ui.scale));
+  canvas.restore();
 }
 
 function canvas_draw_fix(cc, name, fix) {
@@ -1102,6 +1120,7 @@ function canvas_update_post() {
       canvas_draw_terrain(cc);
       canvas_draw_restricted(cc);
       canvas_draw_runways(cc);
+      if(airport_get().hasOwnProperty("aerodrome")) canvas_draw_aerodrome(cc);
       cc.restore();
 
       cc.save();
