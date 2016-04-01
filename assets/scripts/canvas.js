@@ -245,7 +245,7 @@ function canvas_draw_aerodrome(cc) {
   var canvas = $("canvas")[0].getContext("2d");
   var apt = airport_get();
   canvas.save();
-  canvas.rotate(radians(apt.magnetic_north));
+  canvas.rotate(-apt.magnetic_north);
   canvas.drawImage(prop.canvas.aerodrome_img,
     apt.aerodrome.shift_right*prop.ui.scale + prop.canvas.panX,
     -apt.aerodrome.shift_up*prop.ui.scale + prop.canvas.panY,
