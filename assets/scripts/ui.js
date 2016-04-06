@@ -2,7 +2,7 @@
 function ui_init_pre() {
   prop.ui = {};
   prop.ui.scale_default = 8; // pixels per km
-  prop.ui.scale_max = 80; // max scale
+  prop.ui.scale_max = 500; // max scale
   prop.ui.scale_min = 1; // min scale
   prop.ui.scale         = prop.ui.scale_default;
   prop.ui.terrain = {
