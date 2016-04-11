@@ -1032,14 +1032,14 @@ function airport_init() {
 
   // K*
   airport_load("ksfo");
+  airport_load("ktpa");
   airport_load("kmsp");
   airport_load("kjfk");
   airport_load("klax");
   airport_load("klax90");
   airport_load("ksan");
  
-  //  airport_load("ksna");
-
+  // EUROPE
   airport_load("ebbr");
   airport_load("eddh");
   airport_load("eham");

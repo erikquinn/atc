@@ -1,0 +1,151 @@
+{
+  "name": "Tampa International Airport &#9983",
+  "level": "medium",
+  "radio": {
+    "twr": "Tampa Tower",
+    "app": "Tampa Approach",
+    "dep": "Tampa Departure"
+  },
+  "icao": "KTPA",
+  "iata": "TPA",
+  "magnetic_north": -5,
+  "ctr_radius": 75,
+  "ctr_ceiling": 10000,
+  "initial_alt": 6000,
+  "position": ["N27d58.53", "W082d31.99"],
+  "rr_radius_nm": 5.0,
+  "rr_center": ["N27d58.53", "W082d31.99"],
+  "has_terrain": false,
+  "wind": {
+    "angle": 140,
+    "speed": 7
+  },
+  "fixes": {
+    "KTPA" : ["N27d58.53", "W082d31.99"],
+    "ANAZE": ["N27d51.04", "W082d31.97"],
+    "BUCCS": ["N28d08.43", "W082d31.38"],
+    "COSME": ["N28d05.12", "W082d31.49"],
+    "CROWD": ["N27d40.02", "W081d57.67"],
+    "FADDI": ["N28d09.42", "W082d32.15"],
+    "HALLR": ["N27d32.68", "W081d35.93"],
+    "JMBOB": ["N28d05.67", "W082d32.27"],
+    "LAGOO": ["N27d47.78", "W082d32.88"],
+    "MERRA": ["N28d13.27", "W082d32.01"],
+    "MILEJ": ["N27d44.49", "W082d11.03"],
+    "MUWTY": ["N27d45.02", "W082d32.18"],
+    "SELMN": ["N27d49.82", "W082d32.81"]
+  },
+  "runways":[
+    {
+      "name":        ["1L", "19R"],
+      "name_offset": [[0, 0], [0, 0]],
+      "end":         [["N27d57.80", "W82d32.54"], ["N27d59.61", "W82d32.48"]],
+      "length":      3.3534096,
+      "ils":         [true, true]
+    },
+    {
+      "name":        ["1R", "19L"],
+      "name_offset": [[0, 0], [0, 0]],
+      "end":         [["N27d57.86", "W82d31.74"], ["N27d59.23", "W82d31.69"]],
+      "length":      2.52984,
+      "ils":         [false, true]
+    },
+    {
+      "name":        ["10", "28"],
+      "name_offset": [[0, 0], [0, 0]],
+      "end":         [["N27d58.25", "W82d32.17"], ["N27d58.21", "W82d30.86"]],
+      "length":      2.1332952,
+      "ils":         [false, false]
+    }
+  ],
+  "sids": {
+    "CROWD7": {
+      "icao": "CROWD7",
+      "name": "Crowd Seven",
+      "rwy": {
+        "1L" : [],
+        "19R": [],
+        "1R" : [],
+        "19L": [],
+        "10" : [],
+        "28" : []
+      },
+      "body": ["MILEJ", "CROWD"],
+      "transitions": {
+        "HALLR": ["HALLR"]
+      },
+      "draw": [["MILEJ", "CROWD", "HALLR*"]]
+    }
+  },
+  "departures": {
+    "airlines": [
+      ["ual", 11],
+      ["baw", 9],
+      ["ups", 2]
+    ],
+    "destinations": [
+      "CROWD7"
+    ],
+    "type": "random",
+    "offset": 0,
+    "frequency": 38
+  },
+  "arrivals": [
+    {
+      "radial":   45,
+      "heading":  170,
+      "speed":    250,
+      "fixes":   ["KTPA"],
+      "airlines":  [
+        ["ual", 1],
+        ["baw", 1],
+        ["dal", 1],
+        ["aal", 1]
+      ],
+      "type": "random",
+      "offset": 0,
+      "frequency": 7,
+      "altitude":  10000
+    },
+    {
+      "radial":   135,
+      "speed":    250,
+      "fixes":    ["KTPA"],
+      "airlines":  [
+        ["ual", 2],
+        ["baw", 5],
+        ["fastga", 1]
+      ],
+      "type": "random",
+      "frequency": 7,
+      "altitude":  10000
+    },
+    {
+      "radial":   225,
+      "speed":    250,
+      "fixes":    ["KTPA"],
+      "airlines":  [
+        ["ual", 4],
+        ["baw", 3],
+        ["dal", 2],
+        ["aca", 1]
+      ],
+      "type": "random",
+      "frequency": 7,
+      "altitude":  10000
+    },
+    {
+      "radial":   315,
+      "speed":    250,
+      "fixes":    ["KTPA"],
+      "airlines":  [
+        ["ual", 10],
+        ["baw", 10],
+        ["fastga", 1]
+      ],
+      "type": "random",
+      "frequency": 7,
+      "altitude":  10000
+    }
+  ]
+}
